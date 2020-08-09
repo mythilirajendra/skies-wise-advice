@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['/']">Weather App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/weather']">Current Weather</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/historic']">Historic Weather</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/analysis']">Weather Analysis</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="authService.loggedIn()" class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/register']">Sign Up</a></li>
+        <li *ngIf="authService.loggedIn()" class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a></li>
+        <li *ngIf="!authService.loggedIn()" class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" (click)="onLogoutClick()" href="#">Logout</a></li>
+        <li *ngIf="!authService.loggedIn()" class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/profile']">Profile</a></li>
+      </ul>
+    </div>
+  </nav>

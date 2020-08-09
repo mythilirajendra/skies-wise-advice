@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6"><h3 class="text-center my-5">Search for Historic Weather:</h3>
+        <form [formGroup]="historicWeatherSearchForm" (ngSubmit)="sendToAPIXU(historicWeatherSearchForm.value)">
+            <div class="form-group">
+              <input class="form-control" type="text" id="weatherLocation" aria-describedby="weatherLocation" placeholder="Please input a Location"  formControlName="location"/>
+            </div>
+            <input class="form-control" type="text" id="date" aria-describedby="date" placeholder="Please input a date"  formControlName="date"/><br><br>
+            <div class="text-center"> 
+              <button type="submit" class="btn btn-success btn-md">
+                Search for the weather history</button>
+            </div>
+        </form> 
+      </div>
+      <div class="col-md-6"><h3 class="text-center my-5">Historic Weather Details:</h3>
+        <p class="text-center">Location: {{this.weatherData?.data.request[0].query}}</p>
+        <p class="text-center">Max: {{this.weatherData?.data.weather[0].maxtempC}} &#8451; / {{this.weatherData?.data.weather[0].maxtempF}} F</p>
+        <p class="text-center">Min: {{this.weatherData?.data.weather[0].mintempC}} &#8451; / {{this.weatherData?.data.weather[0].mintempF}} F</p>
+        <p class="text-center">Avg: {{this.weatherData?.data.weather[0].avgtempC}} &#8451; / {{this.weatherData?.data.weather[0].avgtempF}} F</p>
+        <p class="text-center">Sunrise: {{this.weatherData?.data.weather[0].astronomy[0].sunrise}}</p>
+        <p class="text-center">Sunset: {{this.weatherData?.data.weather[0].astronomy[0].sunset}}</p>
+      </div>
+    </div>
+</div>

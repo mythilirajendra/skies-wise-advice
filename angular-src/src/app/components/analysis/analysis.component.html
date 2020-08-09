@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6"><h3 class="text-center my-5">Analyze Weather Trends:</h3>
+        <form [formGroup]="analysisWeatherSearchForm" (ngSubmit)="sendToAPIXU(analysisWeatherSearchForm.value)">
+            <div class="form-group">
+              <input class="form-control" type="text" id="weatherLocation" aria-describedby="weatherLocation" placeholder="Please input a Location"  formControlName="location"/>
+            </div>
+            <div class="text-center"> 
+              <button type="submit" class="btn btn-success btn-md">Analyze!</button>
+            </div>
+        </form> 
+      </div>
+      <div class="col-md-6"><h3 class="text-center my-5">Historic Weather Details:</h3>
+        <p class="text-center">Location: {{this.weatherData?.location.address}}</p>
+        <ul>
+        <li *ngFor="let month of this.weatherData?.location.values;let i=index"><p class="text-center">Max: {{this.weatherData?.location.values[i].maxt}} F</p>
+        <p class="text-center">Min:{{this.weatherData?.location.values[i].mint}} F</p></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
